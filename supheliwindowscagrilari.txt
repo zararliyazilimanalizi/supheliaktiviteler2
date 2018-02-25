@@ -1,0 +1,20 @@
+1. Process32Next || CreateToolhelp32Snapshot || Process32First
+   -> OpenProcess -> VirtualAllocEx -> WriteProcessMemory 
+   -> CreateRemoteThread || ResumeThread || SetThreadContex
+
+2. Process32Next || CreateToolhelp32Snapshot || Process32First 
+   -> CreateProcessW || CreateProcessA -> OpenProcess 
+   -> VirtualAllocEx -> WriteProcessMemory -> CreateRemoteThread || 
+   ResumeThread || SetThreadContex
+
+3. Process32Next || CreateToolhelp32Snapshot || Process32First 
+   -> ZwCreateSection -> ZwOpenSection -> ZwMapViewOfSection
+   -> SetThreadContex -> CreateRemoteThread
+
+4. FindFirstFileExW || FindFirstFileW || FindFirstFileA 
+   -> GetFileAttributesW -> NtReadFile -> NtWriteFile
+
+5. GetLogicalDrives -> GetDriveTypeW -> CreateThread -> FindNextFileW  
+   -> wsprintfW -> StrStrIW -> CryptEncrypt
+
+6. NtCreateFile(\PhysicalDrive0) ->  SetFilePointerEx -> NtWriteFile
